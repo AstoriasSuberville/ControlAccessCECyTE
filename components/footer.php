@@ -15,7 +15,7 @@
                     que sean capaces de integrar los avances científicos al desarrollo humano propio y de la sociedad en
                     la que viven.</p>
                 <p class="box">Unete!!</p>
-                <a class="btn btn-success" href="./misionyvision.html" role="button">Misión & Visión</a>
+                <a class="btn btn-success" href="../misionyvision.php" role="button">Misión & Visión</a>
             </div>
             <div class="box">
                 <h2>SIGUENOS</h2>

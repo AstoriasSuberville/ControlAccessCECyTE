@@ -1,1 +1,1 @@
-const APP_URL = `http://localhost/ControlAccesoCECyTE`;
+const APP_URL = `http://127.0.0.1/ControlAccessCECyTE/`;

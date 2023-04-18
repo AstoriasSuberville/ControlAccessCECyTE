@@ -15,7 +15,7 @@ Quagga.init({
 
 // Iniciar la lectura de códigos de barras
 Quagga.start();
-
+queueMicrotask
 // Manejar los resultados de la lectura de códigos de barras
 Quagga.onDetected(function(result) {
 	alert("Código de barras detectado: " + result.codeResult.code);

@@ -1,22 +1,30 @@
-// Configurar la biblioteca QuaggaJS
-Quagga.init({
-	inputStream: {
-		name: "Live",
-		type: "LiveStream",
-		target: document.querySelector("#video"),
-		constraints: {
-			facingMode: "environment",
+document.addEventListener("DOMContentLoaded", () => {
+	const $resultados = document.getElementById("resultado");
+	Quagga.init({
+		inputStream: {
+			constraints: {
+				width: 1920,
+				height: 1080,
+			},
+			name: "Live",
+			type: "LiveStream",
+			target: document.getElementById('video'), // Pasar el elemento del DOM
 		},
-	},
-	decoder: {
-		readers: ["ean_reader"], // Especificar el tipo de código de barras que se quiere leer
-	},
-});
+		decoder: {
+			readers: ["ean_reader"]
+		}
+	}, function (err) {
+		if (err) {
+			console.log(err);
+			return
+		}
+		console.log("Iniciado correctamente");
+		Quagga.start();
+	});
 
-// Iniciar la lectura de códigos de barras
-Quagga.start();
-queueMicrotask
-// Manejar los resultados de la lectura de códigos de barras
-Quagga.onDetected(function(result) {
-	alert("Código de barras detectado: " + result.codeResult.code);
+	Quagga.onDetected((data) => {
+		$resultados.textContent = data.codeResult.code;
+		// Imprimimos todo el data para que puedas depurar
+		console.log(data);
+	});
 });

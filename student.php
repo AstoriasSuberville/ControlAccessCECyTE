@@ -25,7 +25,9 @@ $student = mysqli_fetch_array($query);
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
-    <title><?php echo $student['user_name'] . " " . $student['user_last_name_p'] . " " . $student['user_last_name_m']; ?> - Información del estudiante</title>
+    <title>
+        <?php echo $student['user_name'] . " " . $student['user_last_name_p'] . " " . $student['user_last_name_m']; ?> -
+        Información del estudiante</title>
 </head>
 
 <body>
@@ -72,7 +74,8 @@ $student = mysqli_fetch_array($query);
                 </div>
             </div>
             <div class="col-md-12 d-flex justify-content-end mb-3">
-                <a href="./update_information.php?student_id=<?php echo $student_id; ?>" class="btn btn-primary">Actualizar información</a>
+                <a href="./update_information.php?student_id=<?php echo $student_id; ?>"
+                    class="btn btn-primary">Actualizar información</a>
             </div>
             <div class="col-md-12">
                 <div class="accordion" id="accordionExample">
@@ -138,7 +141,10 @@ $student = mysqli_fetch_array($query);
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                                        aria-labelledby="nav-profile-tab">...</div>
+                                        aria-labelledby="nav-profile-tab">
+                                        grafica
+                                        <div id="chart"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,6 +160,8 @@ $student = mysqli_fetch_array($query);
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/fontawesome.js"></script>
+    <script src="js/apexcharts.js"></script>
+    <script src="js/graficapersonal.js"></script>
 </body>
 
 </html>

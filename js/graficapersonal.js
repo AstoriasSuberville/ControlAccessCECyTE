@@ -1,41 +1,25 @@
 var options = {
     series: [{
-        data: [44, 55, 41, 64, 22, 43, 21]
-    }, {
-        data: [53, 32, 33, 52, 13, 44, 32]
+        data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
     }],
     chart: {
         type: 'bar',
-        height: 430
+        height: 350
     },
     plotOptions: {
         bar: {
+            borderRadius: 4,
             horizontal: true,
-            dataLabels: {
-                position: 'top',
-            },
         }
     },
     dataLabels: {
-        enabled: true,
-        offsetX: -6,
-        style: {
-            fontSize: '12px',
-            colors: ['#fff']
-        }
-    },
-    stroke: {
-        show: true,
-        width: 1,
-        colors: ['#fff']
-    },
-    tooltip: {
-        shared: true,
-        intersect: false
+        enabled: false
     },
     xaxis: {
-        categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
-    },
+        categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+            'United States', 'China', 'Germany'
+        ],
+    }
 };
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);

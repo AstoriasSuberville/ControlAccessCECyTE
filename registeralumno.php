@@ -33,7 +33,8 @@
                 </select>
             </div>
 
-            <button class="btn btn-lg btn-success btn-block" type="submit">Siguiente</button>
+            <a class="btn btn-lg btn-success btn-block" href="./registrartutor.php">Siguiente</a>
+            <!--<button class="btn btn-lg btn-success btn-block" type="submit">Siguiente</button>-->
             <p class="mt-5 mb-3 text-muted">&copy; CECyTE EL CORTÉS - 2023</p>
         </form>
     </div>

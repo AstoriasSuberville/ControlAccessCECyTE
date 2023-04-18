@@ -10,19 +10,18 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
-    <title>Tomar Asistencia</title>
+    <title>Registrar Acceso</title>
 </head>
 
 <body>
     <?php
     require_once('components/navbar.php');
     ?>
-    <h1>Lectura de código de barras</h1>
-
-    <div id="resultado"></div>
-    <div id="video"></div>
-
-
+    <h1 class="text-center">Lectura de código de barras</h1>
+    <div class="d-flex justify-content-center">
+        <div id="resultado"></div>
+        <div id="video"></div>
+    </div>
 
     <?php
     require_once('components/footer.php');

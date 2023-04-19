@@ -31,11 +31,13 @@ const callback = (res) => {
 document.addEventListener("DOMContentLoaded", () => {
     const $codigo = document.querySelector("#codigo");
     $codigo.addEventListener("keydown", evento => {
-        evento.preventDefault();
         if (evento.keyCode === 13) {
             // El lector ya terminó de leer
             const barcode = $codigo.value;
             readBarcode(barcode);
+            console.log("Tenemos un código de barras:");
+            console.log(codigoDeBarras);
+            $codigo.value = "";
         }
     });
 });

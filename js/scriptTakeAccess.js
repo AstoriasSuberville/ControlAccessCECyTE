@@ -30,14 +30,15 @@ const callback = (res) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const $codigo = document.querySelector("#codigo");
-    $codigo.addEventListener("keydown", evento => {
-        if (evento.keyCode === 13) {
-            // El lector ya terminó de leer
-            const barcode = $codigo.value;
-            readBarcode(barcode);
-            console.log("Tenemos un código de barras:");
-            console.log(codigoDeBarras);
-            $codigo.value = "";
-        }
+    $codigo.addEventListener("change", evento => {
+        // El lector ya terminó de leer
+        const barcode = $codigo.value;
+        readBarcode(barcode);
+        console.log("Tenemos un código de barras:");
+        console.log(codigoDeBarras);
+        $codigo.value = "";
+        // if (evento.keyCode === 13) {
+
+        // }
     });
 });

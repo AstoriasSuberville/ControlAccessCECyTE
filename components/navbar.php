@@ -27,7 +27,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Iniciar Sesión</a>
+                <a class="nav-link" href="./login.php">Iniciar Sesión</a>
             </li>
 
             <li class="nav-item">

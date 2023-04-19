@@ -77,7 +77,9 @@ require_once('./admon/conexion.php');
                         <td><?php echo $getStudent['last_name_m']; ?></td>
                         <td><a class="btn btn-lg btn-success"
                                 href="student.php?student_id=<?php echo $getStudent['id']; ?>"><img
-                                    src="./resourses/icons/bar-chart-line-fill.svg" alt=""></a></td>
+                                    src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
+                                    <a class="btn btn-lg btn-success" href=""><img src="./resourses/icons/trash.svg" alt=""></a>
+                                </td>
                     </tr>
                     <?php } ?>
                 </tbody>

@@ -132,7 +132,12 @@ $student = mysqli_fetch_array($query);
                                                         <tr>
                                                             <td><?php echo date('d/m/Y', strtotime($access['fecha'])) ?></td>
                                                             <td><?php echo $access['hora_entrada']; ?></td>
-                                                            <td><?php echo $access['hora_salida']; ?></td>
+                                                            <td><?php if ($access['hora_entrada'] != $access['hora_salida']) {
+                                                                    echo $access['hora_salida'];
+                                                                } else {
+                                                                    echo "";
+                                                                }
+                                                                ?></td>
                                                         </tr>
                                                     <?php } ?>
                                                 </tbody>

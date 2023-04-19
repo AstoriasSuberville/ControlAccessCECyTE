@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
-    <title>Login</title>
+    <title>Misión y Visión</title>
 </head>
 
 <body>

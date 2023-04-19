@@ -27,13 +27,19 @@ $student = mysqli_fetch_array($query);
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
     <title>
         <?php echo $student['user_name'] . " " . $student['user_last_name_p'] . " " . $student['user_last_name_m']; ?> -
-        Información del estudiante</title>
+        Información Del Estudiante</title>
 </head>
 
 <body>
     <?php
     require_once('components/navbar.php');
     ?>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./list_students.php">Lista De Estudiantes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Información Estudiante</li>
+        </ol>
+    </nav>
 
     <div class="container mt-3 mb-4">
         <h2 class="text-center text-success font-weight-bold mb-4">Información del Estudiante</h2>

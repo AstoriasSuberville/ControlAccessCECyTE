@@ -37,6 +37,14 @@ $especialities = mysqli_query($con, "select id, name from especialities;");
     require_once('./components/navbar.php');
     ?>
 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./list_students.php">Lista De Estudiantes</a></li>
+            <li class="breadcrumb-item"><a href="./student.php">Información Estudiante</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Actualización De Datos</li>
+        </ol>
+    </nav>
+
     <div class="container mt-3 mb-4">
         <h2 class="text-center text-success font-weight-bold mb-4">Actualización de Datos del Estudiante</h2>
         <div class="row">

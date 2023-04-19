@@ -48,9 +48,7 @@ $student = mysqli_fetch_array($query);
                 <h4 class="text-center">Detalles del Estudiante</h4>
                 <div class="form-group">
                     <label>Nombre completo</label>
-                    <input type="email"
-                        value="<?php echo $student['user_name'] . " " . $student['user_last_name_p'] . " " . $student['user_last_name_m']; ?>"
-                        class="form-control" readonly>
+                    <input type="email" value="<?php echo $student['user_name'] . " " . $student['user_last_name_p'] . " " . $student['user_last_name_m']; ?>" class="form-control" readonly>
                 </div>
                 <div class="form-group">
                     <label>Especialidad</label>
@@ -65,9 +63,7 @@ $student = mysqli_fetch_array($query);
                 <h4 class="text-center">Detalles del Tutor</h4>
                 <div class="form-group">
                     <label>Nombre completo</label>
-                    <input type="email"
-                        value="<?php echo $student['tutor_name'] . " " . $student['tutor_last_name_p'] . " " . $student['tutor_last_name_m']; ?>"
-                        class="form-control" readonly>
+                    <input type="email" value="<?php echo $student['tutor_name'] . " " . $student['tutor_last_name_p'] . " " . $student['tutor_last_name_m']; ?>" class="form-control" readonly>
                 </div>
                 <div class="form-group">
                     <label>Numero de Casa</label>
@@ -75,28 +71,24 @@ $student = mysqli_fetch_array($query);
                 </div>
                 <div class="form-group">
                     <label>Numero Personal</label>
-                    <input type="email" value="<?php echo $student['tutor_tel_personal'] ?>" class="form-control"
-                        readonly>
+                    <input type="email" value="<?php echo $student['tutor_tel_personal'] ?>" class="form-control" readonly>
                 </div>
             </div>
             <div class="col-md-12 d-flex justify-content-end mb-3">
-                <a href="./update_information.php?student_id=<?php echo $student_id; ?>"
-                    class="btn btn-primary">Actualizar información</a>
+                <a href="./update_information.php?student_id=<?php echo $student_id; ?>" class="btn btn-primary">Actualizar información</a>
             </div>
             <div class="col-md-12">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                     Ver información de asistencias
                                 </button>
                             </h2>
                         </div>
 
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                            data-parent="#accordionExample">
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
                                 <div class="mb-2">
                                     <h6>Filtrar por periodo</h6>
@@ -116,17 +108,12 @@ $student = mysqli_fetch_array($query);
                                 </div>
                                 <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <button class="nav-link active" id="nav-home-tab" data-toggle="tab"
-                                            data-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                            aria-selected="true">Asistencias</button>
-                                        <button class="nav-link" id="nav-profile-tab" data-toggle="tab"
-                                            data-target="#nav-profile" type="button" role="tab"
-                                            aria-controls="nav-profile" aria-selected="false">Graficas</button>
+                                        <button class="nav-link active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Asistencias</button>
+                                        <button class="nav-link" id="nav-profile-tab" data-toggle="tab" data-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Graficas</button>
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                        aria-labelledby="nav-home-tab">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -137,17 +124,22 @@ $student = mysqli_fetch_array($query);
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>17/04/2023</td>
-                                                        <td>10:30:27</td>
-                                                        <td>16:04:50</td>
-                                                    </tr>
+                                                    <?php
+                                                    $getAccesssSql = "SELECT DATE(date_capture) AS fecha, TIME(MIN(date_capture)) AS hora_entrada, TIME(MAX(date_capture)) AS hora_salida FROM asistences where user_id = '" . $student_id . "' GROUP BY DATE(date_capture)";
+                                                    $resAccess = mysqli_query($con, $getAccesssSql);
+                                                    while ($access = mysqli_fetch_array($resAccess)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td><?php echo date('d/m/Y', strtotime($access['fecha'])) ?></td>
+                                                            <td><?php echo $access['hora_entrada']; ?></td>
+                                                            <td><?php echo $access['hora_salida']; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                                        aria-labelledby="nav-profile-tab">
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         grafica
                                         <div id="chart"></div>
                                     </div>

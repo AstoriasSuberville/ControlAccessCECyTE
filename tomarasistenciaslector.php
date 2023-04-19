@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
     <title>Registrar Acceso</title>
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
 </head>
 
 <body>
@@ -41,7 +42,9 @@
     <?php
     require_once('components/footer.php');
     ?>
+    <script src="./js/app.js"></script>
     <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/fontawesome.js"></script>
     <script src="./js/scriptTakeAccess.js"></script>

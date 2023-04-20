@@ -18,19 +18,19 @@
         require_once('components/navbar.php');
     ?>
     <div class="container">
-        <form class="form-signin text-center">
+        <form method="post" action="./controller/LoginController.php" class="form-signin text-center">
             <img class="mb-4" src="img/logo.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Inicia sesión</h1>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+
+            <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Nombre de Usuario" required autofocus>
+            <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contraseña" required>
+            
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Recordar mis datos
                 </label>
             </div>
-            <button class="btn btn-lg btn-success btn-block" type="submit">Acceder</button>
+            <button class="btn btn-lg btn-success btn-block" name="btntIngresar" type="submit">Acceder</button>
             <p class="mt-5 mb-3 text-muted">&copy; CECyTE EL CORTÉS - 2023</p>
         </form>
     </div>

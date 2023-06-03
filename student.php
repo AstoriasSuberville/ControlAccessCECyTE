@@ -1,4 +1,16 @@
 <?php
+session_start();
+require_once('./Helpers/Session.php');
+require_once('./admon/conexion.php');
+
+if (!Session::exists()) {
+    Session::withMessage(['msj' => 'Usted no ha iniciado sesion'], function () {
+        header('Location: /login.php');
+    });
+}
+?>
+
+<?php
 require_once('./admon/conexion.php');
 
 if (!isset($_GET['student_id'])) header('Location: list_students.php');

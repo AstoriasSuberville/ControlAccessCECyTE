@@ -1,3 +1,12 @@
+<?php
+require_once('./Helpers/Session.php');
+session_start();
+
+if (Session::exists()) {
+    header('Location: /Home.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +24,7 @@
 
 <body>
     <?php
-        require_once('components/navbar.php');
+    require_once('components/navbar.php');
     ?>
     <div class="container">
         <form method="post" action="./controller/LoginController.php" class="form-signin text-center">
@@ -24,10 +33,10 @@
 
             <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Nombre de Usuario" required autofocus>
             <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contraseña" required>
-            
+
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Recordar mis datos
+                    <input type="checkbox" name="ckRemember" value="remember-me"> Recordar mis datos
                 </label>
             </div>
             <button class="btn btn-lg btn-success btn-block" name="btntIngresar" type="submit">Acceder</button>
@@ -35,11 +44,22 @@
         </form>
     </div>
     <?php
-        require_once('components/footer.php');
+    require_once('components/footer.php');
     ?>
+    <script src="./js/sweetalert2.all.min.js"></script>
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/fontawesome.js"></script>
+
+    <?php if (Session::in('msj')) { ?>
+        <script defer>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?php echo Session::get('msj') ?>'
+            });
+        </script>
+    <?php } ?>
 </body>
 
 </html>

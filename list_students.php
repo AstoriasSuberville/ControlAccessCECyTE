@@ -1,5 +1,13 @@
 <?php
+session_start();
+require_once('./Helpers/Session.php');
 require_once('./admon/conexion.php');
+
+if (!Session::exists()) {
+    Session::withMessage(['msj' => 'Usted no ha iniciado sesion'], function () {
+        header('Location: /login.php');
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,17 +44,14 @@ require_once('./admon/conexion.php');
 
         <form class="form mb-3">
             <button>
-                <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
-                    aria-labelledby="search">
-                    <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
-                        stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                    <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
                     </path>
                 </svg>
             </button>
             <input class="input" id="search" placeholder="Filtra por nombre o apellidos" required="" type="text">
             <button class="reset" type="reset">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
@@ -70,17 +75,15 @@ require_once('./admon/conexion.php');
                     $query = mysqli_query($con, $sql);
                     while ($getStudent = mysqli_fetch_array($query)) {
                     ?>
-                    <tr>
-                        <th scope="row"><?php echo $getStudent['id']; ?></th>
-                        <td><?php echo $getStudent['name']; ?></td>
-                        <td><?php echo $getStudent['last_name_p']; ?></td>
-                        <td><?php echo $getStudent['last_name_m']; ?></td>
-                        <td><a class="btn btn-lg btn-success"
-                                href="student.php?student_id=<?php echo $getStudent['id']; ?>"><img
-                                    src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
-                                    <a class="btn btn-lg btn-success" href=""><img src="./resourses/icons/trash.svg" alt=""></a>
-                                </td>
-                    </tr>
+                        <tr>
+                            <th scope="row"><?php echo $getStudent['id']; ?></th>
+                            <td><?php echo $getStudent['name']; ?></td>
+                            <td><?php echo $getStudent['last_name_p']; ?></td>
+                            <td><?php echo $getStudent['last_name_m']; ?></td>
+                            <td><a class="btn btn-lg btn-success" href="student.php?student_id=<?php echo $getStudent['id']; ?>"><img src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
+                                <a class="btn btn-lg btn-success" href=""><img src="./resourses/icons/trash.svg" alt=""></a>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>

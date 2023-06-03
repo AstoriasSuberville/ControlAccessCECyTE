@@ -1,3 +1,15 @@
+<?php
+session_start();
+require_once('./Helpers/Session.php');
+require_once('./admon/conexion.php');
+
+if (!Session::exists()) {
+    Session::withMessage(['msj' => 'Usted no ha iniciado sesion'], function () {
+        header('Location: /login.php');
+    });
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +27,7 @@
 
 <body>
     <?php
-        require_once('components/navbar.php');
+    require_once('components/navbar.php');
     ?>
     <div>
         <h1 style="text-align:center">Lista De Alumnos</h1>
@@ -67,7 +79,7 @@
         </tbody>
     </table>
     <?php
-        require_once('components/footer.php');
+    require_once('components/footer.php');
     ?>
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>

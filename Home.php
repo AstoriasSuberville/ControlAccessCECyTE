@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once('./Helpers/Session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +20,7 @@
 
 <body>
     <?php
-        require_once('components/navbar.php');
+    require_once('components/navbar.php');
     ?>
     <div class="container">
         <div class="text-center">
@@ -24,9 +29,9 @@
         </div>
 
         <div class="text-center">
-            <hr/>
-                <img src="./img/logomin.png" class="img-fluid" width="100" height="100" alt="">
-            <hr/>
+            <hr />
+            <img src="./img/logomin.png" class="img-fluid" width="100" height="100" alt="">
+            <hr />
         </div>
 
         <div class="">
@@ -36,11 +41,11 @@
         </div>
 
         <div style="background-color: #e2e2e2; margin-top: 30px;" class="text-center">
-                <h2 class="text-center">Nuestra Misión</h2>
-                <p>Impartir educación científica y tecnológica de calidad y excelencia
-                    en el nivel medio superior con un enfoque humano-productivo, que forme
-                    bachilleres y técnicos profesionales con sólidos principios y comprometidos
-                    con el desarrollo sustentable.</p>
+            <h2 class="text-center">Nuestra Misión</h2>
+            <p>Impartir educación científica y tecnológica de calidad y excelencia
+                en el nivel medio superior con un enfoque humano-productivo, que forme
+                bachilleres y técnicos profesionales con sólidos principios y comprometidos
+                con el desarrollo sustentable.</p>
         </div>
 
         <div>
@@ -61,11 +66,22 @@
         </div>
     </div>
     <?php
-        require_once('components/footer.php');
+    require_once('components/footer.php');
     ?>
+    <script src="./js/sweetalert2.all.min.js"></script>
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/fontawesome.js"></script>
+
+    <?php if (Session::in('msj')) { ?>
+        <script defer>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?php echo Session::get('msj') ?>'
+            });
+        </script>
+    <?php } ?>
 </body>
 
 </html>

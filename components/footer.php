@@ -20,11 +20,10 @@
             <div class="box">
                 <h2>SIGUENOS</h2>
                 <div class="red-social">
-                    <a href="https://www.facebook.com/profile.php?id=100054598234131" class="fa fa-facebook"
-                        target="_blank"></a>
-                    <a href="#" class="fa fa-instagram"></a>
-                    <a href="#" class="fa fa-twitter"></a>
-                    <a href="#" class="fa fa-youtube"></a>
+                    <a href="https://www.facebook.com/profile.php?id=100054598234131" class="fa fa-facebook" target="_blank"></a>
+                    <a href="https://www.instagram.com/cecyteguerrero/" class="fa fa-instagram" target="_blank"></a>
+                    <a href="https://twitter.com/cecytegro" class="fa fa-twitter" target="_blank"></a>
+                    <a href="https://www.youtube.com/@cecytegro/videos" class="fa fa-youtube" target="_blank"></a>
                 </div>
             </div>
         </div>

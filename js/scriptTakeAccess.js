@@ -1,7 +1,7 @@
 const readBarcode = (barcode) => {
     const data = new FormData();
     data.append('barcode', barcode);
-    fetch(`${APP_URL}/api/register-access.php`, {
+    fetch(`api/register-access.php`, {
         headers: new Headers(),
         method: 'POST',
         body: data

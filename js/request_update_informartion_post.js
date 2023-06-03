@@ -10,7 +10,7 @@ const request_update_information = (form) => {
         const SEND_FORM_DATA = new FormData(form);
         const REQUEST_METHOD = form.method.toUpperCase();
 
-        fetch(`${APP_URL}/api/${SEND_FORM_PATH}`, {
+        fetch(`api/${SEND_FORM_PATH}`, {
             headers: new Headers(),
             method: REQUEST_METHOD,
             body: SEND_FORM_DATA

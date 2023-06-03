@@ -99,6 +99,18 @@ if (!Session::exists()) {
     <script src="js/fontawesome.js"></script>
 
     <script src="./js/request_data_students.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+
+    <?php if (Session::in('msj')) { ?>
+        <script defer>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Muy bien :)',
+                text: '<?php echo Session::get('msj') ?>'
+            });
+        </script>
+    <?php } ?>
 </body>
 
 </html>

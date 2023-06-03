@@ -27,7 +27,6 @@ class Session
 
     public static function in($key): bool
     {
-        // unset($_SESSION[self::FLASH_INDENTIFIER]);
         $flashMessages = isset($_SESSION[self::FLASH_INDENTIFIER]) ? $_SESSION[self::FLASH_INDENTIFIER] : array();
         return array_key_exists($key, $flashMessages);
     }

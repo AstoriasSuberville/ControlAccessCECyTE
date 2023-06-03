@@ -10,7 +10,7 @@ filter.addEventListener("keyup", (evt) => {
 
     const form = new FormData();
     form.append(`key_words`, filter.value)
-    fetch(`${APP_URL}/api/get-students.php`, {
+    fetch(`api/get-students.php`, {
         method: `POST`,
         headers: new Headers(),
         body: form

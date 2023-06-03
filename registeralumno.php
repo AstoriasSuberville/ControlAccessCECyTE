@@ -30,23 +30,27 @@ if (!Session::exists()) {
     require_once('components/navbar.php');
     ?>
     <div class="container">
-        <form class="form-signin text-center">
+        <form class="form-signin text-center" method="POST" action="./controller/RegisterStudentController.php">
             <img class="mb-4" src="img/logo.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Registrar Alumno</h1>
-            <input type="text" id="inputNameAlumno" class="form-control mb-1" placeholder="Nombre Del Alumno" required autofocus>
-            <input type="text" id="inputApellidoP" class="form-control mb-1" placeholder="Apellido Paterno" required>
-            <input type="text" id="inputApellidoM" class="form-control mb-1" placeholder="Apellido Materno" required>
-            <input type="text" id="inputMatricula" class="form-control mb-1" placeholder="Matricula Del Alumno" required>
+            <input type="text" name="txtName" id="inputNameAlumno" class="form-control mb-1" placeholder="Nombre del Alumno" required>
+            <input type="text" name="txtFirstLastName" id="inputApellidoP" class="form-control mb-1" placeholder="Apellido Paterno" required>
+            <input type="text" name="txtSecondLastName" id="inputApellidoM" class="form-control mb-1" placeholder="Apellido Materno">
+            <input type="text" name="txtMatricula" id="inputMatricula" class="form-control mb-1" placeholder="Matricula del Alumno" required>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Seleccionar Especialidad</label>
-                <select class="form-control" id="SelectorEspecialities">
-                    <option>Programación</option>
-                    <option>Ecoturismo</option>
+                <select class="form-control" name="slCarrier" id="SelectorEspecialities">
+                    <?php
+                    $query = 'select id, name from especialities order by name asc;';
+                    $res = mysqli_query($con, $query);
+                    while ($data = mysqli_fetch_assoc($res)) {
+                    ?>
+                        <option value="<?php echo $data['id']; ?>"><?php echo $data['name']; ?></option>
+                    <?php } ?>
                 </select>
             </div>
 
-            <a class="btn btn-lg btn-success btn-block" href="./registrartutor.php">Siguiente</a>
-            <!--<button class="btn btn-lg btn-success btn-block" type="submit">Siguiente</button>-->
+            <button class="btn btn-lg btn-success btn-block" type="submit">Siguiente</button>
             <p class="mt-5 mb-3 text-muted">&copy; CECyTE EL CORTÉS - 2023</p>
         </form>
     </div>
@@ -56,6 +60,17 @@ if (!Session::exists()) {
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/fontawesome.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+
+    <?php if (Session::in('error')) { ?>
+        <script defer>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?php echo Session::get('error') ?>'
+            });
+        </script>
+    <?php } ?>
 </body>
 
 </html>

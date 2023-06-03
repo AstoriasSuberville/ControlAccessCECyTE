@@ -22,12 +22,12 @@ create table Especialities (
 
 create table User (
 	id int primary key AUTO_INCREMENT,
-	barcode varchar(20) not null,
+	barcode varchar(20),
 	tutor_id int,
 	speciality_id int,
 	rol_id int,
-	user_name varchar(20),
-	password varchar(30),
+	user_name varchar(20) null,
+	password varchar(60) null,
 	name varchar(20) not null,
 	last_name_p varchar(20) not null,
 	last_name_m varchar(20),

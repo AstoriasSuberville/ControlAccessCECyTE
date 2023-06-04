@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once('./Helpers/Session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +15,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
-    <title>Login</title>
+    <title>Actualizar Periodo</title>
 </head>
 
 <body>

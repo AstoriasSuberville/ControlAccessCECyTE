@@ -10,8 +10,16 @@
                 <a class="nav-link" href="./Home.php">Inicio</a>
             </li>
             <?php if (Session::exists()) { ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="./list_students.php">Visualizar Alumnos</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Visualizar
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./list_students.php">Visualizar Alumno</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./list_tutors.php">Visualizar Tutores</a>
+                    </div>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -30,7 +38,18 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./Mensajeria.php">Mensajeria</a>
+                    <a class="nav-link" href="./registraradministrativo.php">Registrar Administrativo</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Periodo Escolar
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./verperiodo.php">Ver Periodo</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./actualizarperiodo.php">Actualizar Periodo</a>
+                    </div>
                 </li>
 
                 <li class="nav-item">

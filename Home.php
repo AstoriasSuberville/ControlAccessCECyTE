@@ -54,7 +54,7 @@ require_once('./Helpers/Session.php');
             </h2>
         </div>
 
-        <div>
+        <div class="mb-5">
             <video class="table-responsive" controls>
                 <source src="./videos/CECYTE_08_El_Cortes.mp4" type="video/mp4">
                 <img src="./img/Error/mantenimiento.png" width="850" height="600" alt="">

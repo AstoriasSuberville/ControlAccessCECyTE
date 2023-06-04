@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once('./Helpers/Session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

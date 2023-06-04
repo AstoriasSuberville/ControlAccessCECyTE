@@ -33,6 +33,7 @@ if (!Session::exists()) {
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./Home.php">Inicio</a></li>
             <li class="breadcrumb-item active" aria-current="page">Lista De Estudiantes</li>
         </ol>
     </nav>
@@ -71,17 +72,18 @@ if (!Session::exists()) {
                 </thead>
                 <tbody id="contentStudents">
                     <?php
-                    $sql = "select u.id, u.name, u.last_name_p, u.last_name_m from user as u group by u.id";
+                    $sql = "select u.id, u.barcode, u.name, u.last_name_p, u.last_name_m from user as u group by u.id";
                     $query = mysqli_query($con, $sql);
                     while ($getStudent = mysqli_fetch_array($query)) {
                     ?>
                         <tr>
-                            <th scope="row"><?php echo $getStudent['id']; ?></th>
+                            <th scope="row"><?php echo $getStudent['barcode']; ?></th>
                             <td><?php echo $getStudent['name']; ?></td>
                             <td><?php echo $getStudent['last_name_p']; ?></td>
                             <td><?php echo $getStudent['last_name_m']; ?></td>
-                            <td><a class="btn btn-lg btn-success" href="student.php?student_id=<?php echo $getStudent['id']; ?>"><img src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
-                                <a class="btn btn-lg btn-success" href=""><img src="./resourses/icons/trash.svg" alt=""></a>
+                            <td>
+                                <a class="btn btn-lg btn-success" href="student.php?student_id=<?php echo $getStudent['id']; ?>"><img src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
+                                <button class="btn btn-lg btn-success btnDelete" aria-details="<?php echo $getStudent['id']; ?>" href=""><img src="./resourses/icons/trash.svg" alt=""></button>
                             </td>
                         </tr>
                     <?php } ?>

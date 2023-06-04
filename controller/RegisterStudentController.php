@@ -24,7 +24,7 @@ if (mysqli_num_rows($res) > 0) {
             header('Location: /registrartutor.php');
         });
     } else {
-        Session::withMessage(['error' => 'El estudiante ya esta registrado completamente.'], function () {
+        Session::withMessage(['error' => 'Ya existe un estudiante registrado con esta misma matricula.'], function () {
             header('Location: /registeralumno.php');
         });
     }

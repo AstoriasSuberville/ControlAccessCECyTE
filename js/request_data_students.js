@@ -39,3 +39,54 @@ filter.addEventListener("keyup", (evt) => {
             contentStudents.innerHTML = data;
         });
 });
+
+(() => {
+    $('.btnDelete').click(evt => {
+        Swal.fire({
+            title: '¿Seguro que desea realizar esta accion?',
+            text: "Una vez eliminado el estudiante no hay vuelta atras, esto tambien implica eliminar todas sus asistencias.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, deseo hacerlo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const student_id = $(evt.target).attr('aria-details');
+                const form = new FormData();
+                form.append('student_id', student_id);
+
+                fetch(`api/delete-student.php`, {
+                    method: 'POST',
+                    headers: new Headers(),
+                    body: form
+                }).then(res => res.json())
+                    .then(res => {
+                        if (res.code == "200") {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: res.msj,
+                                showConfirmButton: false
+                            }).then(res => {
+                                window.location.reload()
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: res.msj
+                            })
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Ocurrio un error en la ruta URL'
+                        })
+                    });
+            }
+        })
+    });
+})();

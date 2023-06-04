@@ -48,6 +48,7 @@ $student = mysqli_fetch_array($query);
     ?>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./Home.php">Inicio</a></li>
             <li class="breadcrumb-item"><a href="./list_students.php">Lista De Estudiantes</a></li>
             <li class="breadcrumb-item active" aria-current="page">Información Estudiante</li>
         </ol>

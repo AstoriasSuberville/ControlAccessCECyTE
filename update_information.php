@@ -48,8 +48,9 @@ $especialities = mysqli_query($con, "select id, name from especialities;");
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./Home.php">Inicio</a></li>
             <li class="breadcrumb-item"><a href="./list_students.php">Lista De Estudiantes</a></li>
-            <li class="breadcrumb-item"><a href="./student.php">Información Estudiante</a></li>
+            <li class="breadcrumb-item"><a href="./student.php?student_id=<?php echo $student_id; ?>">Información Estudiante</a></li>
             <li class="breadcrumb-item active" aria-current="page">Actualización De Datos</li>
         </ol>
     </nav>

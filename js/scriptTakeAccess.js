@@ -1,4 +1,4 @@
-const readBarcode = (barcode) => {
+const readBarcode = (barcode, callback) => {
     const data = new FormData();
     data.append('barcode', barcode);
     fetch(`api/register-access.php`, {
@@ -33,12 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     $codigo.addEventListener("change", evento => {
         // El lector ya terminó de leer
         const barcode = $codigo.value;
-        readBarcode(barcode);
-        console.log("Tenemos un código de barras:");
-        console.log(codigoDeBarras);
-        $codigo.value = "";
-        // if (evento.keyCode === 13) {
-
-        // }
+        readBarcode(barcode, callback);
     });
 });

@@ -23,6 +23,11 @@ require_once('./Helpers/Session.php');
     require_once('components/navbar.php');
     ?>
     <div class="container">
+        <nav aria-label="breadcrumb" class="mt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Inicio</li>
+            </ol>
+        </nav>
         <div class="text-center">
             <img src="./img/CecyteGuerrero&Logo.png" class="img-fluid" alt="">
             <img src="./img/CecyteEMSAD.png" class="img-fluid" width="400" height="400" alt="">

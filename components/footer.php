@@ -2,7 +2,7 @@
         <div class="grupo-1">
             <div class="box">
                 <figure>
-                    <a href="#">
+                    <a href="./Home.php">
                         <img src="img/logo.png" alt="Logo Cecyte">
                     </a>
                 </figure>

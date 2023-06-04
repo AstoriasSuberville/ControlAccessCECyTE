@@ -57,13 +57,13 @@ $especialities = mysqli_query($con, "select id, name from especialities;");
     <div class="container mt-3 mb-4">
         <h2 class="text-center text-success font-weight-bold mb-4">Actualización de Datos del Estudiante</h2>
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="v-pills-home-tab" data-toggle="pill" data-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Estudiante</button>
                     <button class="nav-link" id="v-pills-profile-tab" data-toggle="pill" data-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Tutor</button>
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-md-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <form action="/api/update-information-student.php" method="post">
@@ -103,7 +103,7 @@ $especialities = mysqli_query($con, "select id, name from especialities;");
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <form action="/api/update-information-tutor.php" method="post">
-                            <h4 class="text-center">Información del Tutor</h4>
+                            <h4 class="text-center">Información del Tutor Asignado</h4>
                             <input type="hidden" name="tutor_id" value="<?php echo stripslashes($student['tutor_id']); ?>">
                             <div class="form-group">
                                 <label>Nombre</label>

@@ -41,15 +41,8 @@
                     <a class="nav-link" href="./registraradministrativo.php">Administrativo</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Periodo Escolar
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="./verperiodo.php">Ver Periodo</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="./actualizarperiodo.php">Actualizar Periodo</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="./verperiodo.php">Periodo</a>
                 </li>
 
                 <li class="nav-item">

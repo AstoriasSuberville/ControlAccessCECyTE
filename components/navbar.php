@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./registraradministrativo.php">Registrar Administrativo</a>
+                    <a class="nav-link" href="./registraradministrativo.php">Administrativo</a>
                 </li>
 
                 <li class="nav-item dropdown">

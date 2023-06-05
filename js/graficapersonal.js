@@ -1,25 +1,55 @@
 var options = {
-    series: [{
-        data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-    }],
+    series: [44, 55],
     chart: {
-        type: 'bar',
-        height: 350
+        width: 380,
+        type: 'pie',
+        toolbar: {
+            show: true,
+            offsetX: 0,
+            offsetY: 0,
+            tools: {
+                download: true,
+                selection: true,
+                zoom: true,
+                zoomin: true,
+                zoomout: true,
+                pan: true,
+                reset: true | '<img src="/static/icons/reset.png" width="20">',
+                customIcons: []
+            },
+            export: {
+                csv: {
+                    filename: undefined,
+                    columnDelimiter: ',',
+                    headerCategory: 'category',
+                    headerValue: 'value',
+                    dateFormatter(timestamp) {
+                        return new Date(timestamp).toDateString()
+                    }
+                },
+                svg: {
+                    filename: undefined,
+                },
+                png: {
+                    filename: undefined,
+                }
+            },
+            autoSelected: 'zoom'
+        },
     },
-    plotOptions: {
-        bar: {
-            borderRadius: 4,
-            horizontal: true,
+    //colors: ['#1CD6CE', '#D61C4E'],
+    labels: ['Inasistencias', 'Asistencias'],
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+            legend: {
+                position: 'bottom'
+            }
         }
-    },
-    dataLabels: {
-        enabled: false
-    },
-    xaxis: {
-        categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-            'United States', 'China', 'Germany'
-        ],
-    }
+    }]
 };
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);

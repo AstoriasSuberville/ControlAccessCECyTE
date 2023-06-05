@@ -158,7 +158,6 @@ $student = mysqli_fetch_array($query);
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                        grafica
                                         <div id="chart"></div>
                                     </div>
                                 </div>
@@ -178,6 +177,7 @@ $student = mysqli_fetch_array($query);
     <script src="js/fontawesome.js"></script>
     <script src="js/apexcharts.js"></script>
     <script src="js/graficapersonal.js"></script>
+    <script src="js/descargar_grafica.js"></script>
 </body>
 
 </html>

@@ -37,8 +37,15 @@
                     <a class="nav-link" href="./registeralumno.php">Registrar Alumno</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="./registraradministrativo.php">Administrativo</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Administrativo
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./registraradministrativo.php">Registrar Administrativo</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./veradministrativo.php">Ver Administrativos</a>
+                    </div>
                 </li>
 
                 <li class="nav-item">

@@ -1,6 +1,11 @@
 <?php
 session_start();
 require_once('./Helpers/Session.php');
+require_once('./Helpers/Hash.php');
+?>
+
+<?php
+echo Hash::make('cecyte2023');
 ?>
 
 <!DOCTYPE html>

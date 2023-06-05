@@ -53,7 +53,5 @@ create table config_semester (
 
 create table non_working_days (
 	id int primary key AUTO_INCREMENT,
-	day date,
-	config_semester_id int not null,
-	FOREIGN key(config_semester_id) references config_semester(id)
+	day date
 );

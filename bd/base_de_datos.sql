@@ -1,4 +1,5 @@
 create database CECyTEDB;
+
 use CECyTEDB;
 
 create table Tutor (
@@ -41,4 +42,18 @@ create table Asistences (
 	user_id int,
 	date_capture datetime,
 	FOREIGN KEY (user_id) references User(id)
+);
+
+create table config_semester (
+	id int primary key AUTO_INCREMENT,
+	name varchar(50) not null,
+	initial_day_semester date not null,
+	final_day_semester date not null
+);
+
+create table non_working_days (
+	id int primary key AUTO_INCREMENT,
+	day date,
+	config_semester_id int not null,
+	FOREIGN key(config_semester_id) references config_semester(id)
 );

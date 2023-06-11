@@ -1,6 +1,13 @@
 <?php
 session_start();
 require_once('./Helpers/Session.php');
+require_once('./admon/conexion.php');
+
+if (!Session::exists()) {
+    Session::withMessage(['msj' => 'Usted no ha iniciado sesion'], function () {
+        header('Location: /login.php');
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,14 +30,70 @@ require_once('./Helpers/Session.php');
         require_once('components/navbar.php');
     ?>
     <div class="container table-responsive">
-        <img src="./img/Error/mantenimiento.png" width="850" height="600" alt="">
+
+        <div class="mt-3">
+            <h1 style="text-align:center">Lista De Administrativos</h1>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido Paterno</th>
+                        <th scope="col">Apellido Materno</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Opciones</th>
+
+                    </tr>
+                </thead>
+                <tbody id="contentAdmon">
+                    <?php
+                    $sql = "select u.id, u.name, u.last_name_p, u.last_name_m, u.user_name, u.rol_id from user as u group by u.id";
+                    $query = mysqli_query($con, $sql);
+                    while ($getSadmon = mysqli_fetch_array($query)) {   
+                    ?>
+
+                    <tr>
+                        <th scope="row"><?php echo $getSadmon['name']; ?></th>
+                        <td><?php echo $getSadmon['last_name_p']; ?></td>
+                        <td><?php echo $getSadmon['last_name_m']; ?></td>
+                        <td><?php echo $getSadmon['user_name']; ?></td>
+                        <td><?php echo $getSadmon['rol_id']; ?></td>
+                        <td>
+                            <a class="btn btn-lg btn-success"
+                                href="student.php?student_id=<?php echo $getSadmon['id']; ?>"><img
+                                    src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
+                            <button class="btn btn-lg btn-success btnDelete"
+                                aria-details="<?php echo $getSadmon['id']; ?>" href=""><img
+                                    src="./resourses/icons/trash.svg" alt=""></button>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
+    </div>
+
     <?php
         require_once('components/footer.php');
     ?>
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/fontawesome.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+
+    <?php if (Session::in('msj')) { ?>
+    <script defer>
+    Swal.fire({
+        icon: 'success',
+        title: 'Se realizo la acción',
+        text: '<?php echo Session::get('msj') ?>'
+    });
+    </script>
+    <?php } ?>
 </body>
 
 </html>

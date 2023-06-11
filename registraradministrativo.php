@@ -30,14 +30,14 @@ if (!Session::exists()) {
     require_once('components/navbar.php');
     ?>
     <div class="container">
-        <form class="form-signin text-center" method="POST" action="./controller/RegisterStudentController.php">
+        <form class="form-signin text-center" method="POST" action="./controller/RegisterAdmonController.php">
             <img class="mb-4" src="img/logo.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Registrar Administrativo</h1>
             <input type="text" name="AdmonName" id="inputNameAdmon" class="form-control mb-1" placeholder="Nombre" required>
             <input type="text" name="AdmonFirstLastName" id="inputApellidoPAdmon" class="form-control mb-1" placeholder="Apellido Paterno" required>
             <input type="text" name="AdmonSecondLastName" id="inputApellidoMAdmon" class="form-control mb-1" placeholder="Apellido Materno">
             <input type="text" name="AdmonUser" id="inputUserAdmon" class="form-control mb-1" placeholder="Usuario" required>
-            <input type="text" name="AdmonPassw" id="inputPasswAdmon" class="form-control mb-1" placeholder="Contraseña" required>
+            <input type="password" name="AdmonPassw" id="inputPasswAdmon" class="form-control mb-1" placeholder="Contraseña" required>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Seleccionar Cargo</label>
                 <select class="form-control" name="slCarrier" id="SelectorEspecialities">
@@ -69,6 +69,16 @@ if (!Session::exists()) {
                 icon: 'error',
                 title: 'Oops...',
                 text: '<?php echo Session::get('error') ?>'
+            });
+        </script>
+    <?php } ?>
+
+    <?php if (Session::in('msj')) { ?>
+        <script defer>
+            Swal.fire({
+                icon: 'success',
+                title: 'Se realizo la acción',
+                text: '<?php echo Session::get('msj') ?>'
             });
         </script>
     <?php } ?>

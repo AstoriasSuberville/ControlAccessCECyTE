@@ -22,7 +22,7 @@ $admonpassw = $_POST['AdmonPassw'];
 $slCarrier = $_POST['slCarrier'];
 $Hashpassword = Hash::make($admonpassw);
 
-$query = "select u.id from user u join rol r on u.rol_id = r.id where lower(r.name) = 'director'";
+$query = "select u.id from user u join rol r on u.rol_id = r.id where r.id = $slCarrier and lower(r.name) = 'director'";
 $res = mysqli_query($con, $query);
 
 if (mysqli_num_rows($res) > 0) {

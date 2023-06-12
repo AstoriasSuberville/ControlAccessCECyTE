@@ -66,13 +66,16 @@ if (!Session::exists()) {
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido Materno</th>
                         <th scope="col">Apellido Paterno</th>
+                        <th scope="col">Especialidad</th>
                         <th scope="col">Opciones</th>
 
                     </tr>
                 </thead>
                 <tbody id="contentStudents">
                     <?php
-                    $sql = "select u.id, u.barcode, u.name, u.last_name_p, u.last_name_m from user u join rol r on u.rol_id = r.id where lower(r.name) = 'estudiante' order by u.id";
+                    $limit = (isset($_GET['page'])) ? $_GET['page'] * 5 : 0;
+                    $countSql = "select count(u.id) as total from user u join rol r on u.rol_id = r.id left join especialities c on u.speciality_id = c.id where lower(r.name) = 'estudiante' order by u.id;";
+                    $sql = "select u.id, u.barcode, u.name, u.last_name_p, u.last_name_m, c.name as carrier_name from user u join rol r on u.rol_id = r.id left join especialities c on u.speciality_id = c.id where lower(r.name) = 'estudiante' order by u.id limit $limit, 5;";
                     $query = mysqli_query($con, $sql);
                     while ($getStudent = mysqli_fetch_array($query)) {
                     ?>
@@ -81,6 +84,7 @@ if (!Session::exists()) {
                             <td><?php echo $getStudent['name']; ?></td>
                             <td><?php echo $getStudent['last_name_p']; ?></td>
                             <td><?php echo $getStudent['last_name_m']; ?></td>
+                            <td><?php echo $getStudent['carrier_name']; ?></td>
                             <td>
                                 <a class="btn btn-lg btn-success" href="student.php?student_id=<?php echo $getStudent['id']; ?>"><img src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
                                 <button class="btn btn-lg btn-success btnDelete" aria-details="<?php echo $getStudent['id']; ?>" href=""><img src="./resourses/icons/trash.svg" alt=""></button>
@@ -89,6 +93,16 @@ if (!Session::exists()) {
                     <?php } ?>
                 </tbody>
             </table>
+            <nav class="d-flex justify-content-center" aria-label="Page navigation">
+                <ul class="pagination">
+                    <?php
+                    $res = mysqli_fetch_array(mysqli_query($con, $countSql));
+                    for ($i = 0; $i < ceil($res['total'] / 5); $i++) {
+                    ?>
+                        <li class="page-item"><a href="list_students.php?page=<?php echo $i; ?>" class="page-link"><?php echo $i + 1; ?></a></li>
+                    <?php } ?>
+                </ul>
+            </nav>
         </div>
     </div>
 

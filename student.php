@@ -138,7 +138,9 @@ $student = mysqli_fetch_array($query);
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $getAccesssSql = "SELECT DATE(date_capture) AS fecha, TIME(MIN(date_capture)) AS hora_entrada, TIME(MAX(date_capture)) AS hora_salida FROM asistences where user_id = '" . $student_id . "' GROUP BY DATE(date_capture)";
+                                                    $limit = (isset($_GET['page'])) ? $_GET['page'] * 5 : 0;
+                                                    $countSql = "SELECT DATE(date_capture) AS fecha, TIME(MIN(date_capture)) AS hora_entrada, TIME(MAX(date_capture)) AS hora_salida FROM asistences where user_id = '" . $student_id . "' GROUP BY DATE(date_capture);";
+                                                    $getAccesssSql = "SELECT DATE(date_capture) AS fecha, TIME(MIN(date_capture)) AS hora_entrada, TIME(MAX(date_capture)) AS hora_salida FROM asistences where user_id = '" . $student_id . "' GROUP BY DATE(date_capture) limit $limit, 5";
                                                     $resAccess = mysqli_query($con, $getAccesssSql);
                                                     while ($access = mysqli_fetch_array($resAccess)) {
                                                     ?>
@@ -155,6 +157,16 @@ $student = mysqli_fetch_array($query);
                                                     <?php } ?>
                                                 </tbody>
                                             </table>
+                                            <nav class="d-flex justify-content-center" aria-label="Page navigation">
+                                                <ul class="pagination">
+                                                    <?php
+                                                    $res = mysqli_num_rows(mysqli_query($con, $countSql));
+                                                    for ($i = 0; $i < ceil($res / 5); $i++) {
+                                                    ?>
+                                                        <li class="page-item"><a href="student.php?student_id=<?php echo $student_id?>&page=<?php echo $i; ?>" class="page-link"><?php echo $i + 1; ?></a></li>
+                                                    <?php } ?>
+                                                </ul>
+                                            </nav>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

@@ -8,7 +8,17 @@ require_once('./../admon/conexion.php');
 $key_words = $_POST['key_words'];
 
 $students = [];
-$sql = "select id, name, last_name_p, last_name_m from user where CONCAT(name, ' ', last_name_p, ' ', last_name_m) like '%" . $key_words . "%' or name like '%" . $key_words . "%' or last_name_p like '%" . $key_words . "%' or last_name_m like '%" . $key_words . "%' group by id;";
+$sql = "SELECT u.id, u.name, u.last_name_p, u.last_name_m, c.name as carrier
+FROM user u 
+JOIN rol r ON u.rol_id = r.id 
+LEFT JOIN especialities c ON u.speciality_id = c.id 
+WHERE lower(r.name) = 'estudiante' 
+AND (CONCAT(u.name, ' ', u.last_name_p, ' ', u.last_name_m) LIKE '%Jesus%' 
+    OR u.name LIKE '%" . $key_words . "%' 
+    OR u.last_name_p LIKE '%" . $key_words . "%' 
+    OR u.last_name_m LIKE '%" . $key_words . "%')
+GROUP BY u.id;
+";
 $query = mysqli_query($con, $sql);
 while ($getStudents = mysqli_fetch_array($query)) $students[] = $getStudents;
 

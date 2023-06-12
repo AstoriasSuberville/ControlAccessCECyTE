@@ -27,7 +27,7 @@ if (!Session::exists()) {
 
 <body>
     <?php
-        require_once('components/navbar.php');
+    require_once('components/navbar.php');
     ?>
     <div class="container table-responsive">
 
@@ -50,35 +50,43 @@ if (!Session::exists()) {
                 </thead>
                 <tbody id="contentAdmon">
                     <?php
-                    $sql = "select u.id, u.name, u.last_name_p, u.last_name_m, u.user_name, r.name as rol_name from user as u join rol r on u.rol_id = r.id where lower(r.name) <> 'estudiante' order by u.id";
+                    $limit = (isset($_GET['page'])) ? $_GET['page'] * 5 : 0;
+                    $countSql = "select count(u.id) as total from user as u join rol r on u.rol_id = r.id where lower(r.name) <> 'estudiante' order by u.id;";
+                    $sql = "select u.id, u.name, u.last_name_p, u.last_name_m, u.user_name, r.name as rol_name from user as u join rol r on u.rol_id = r.id where lower(r.name) <> 'estudiante' order by u.id limit $limit, 5;";
                     $query = mysqli_query($con, $sql);
-                    while ($getSadmon = mysqli_fetch_array($query)) {   
+                    while ($getSadmon = mysqli_fetch_array($query)) {
                     ?>
 
-                    <tr>
-                        <th scope="row"><?php echo $getSadmon['name']; ?></th>
-                        <td><?php echo $getSadmon['last_name_p']; ?></td>
-                        <td><?php echo $getSadmon['last_name_m']; ?></td>
-                        <td><?php echo $getSadmon['user_name']; ?></td>
-                        <td><?php echo $getSadmon['rol_name']; ?></td>
-                        <td>
-                            <a class="btn btn-lg btn-success"
-                                href="student.php?student_id=<?php echo $getSadmon['id']; ?>"><img
-                                    src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
-                            <button class="btn btn-lg btn-success btnDelete"
-                                aria-details="<?php echo $getSadmon['id']; ?>" href=""><img
-                                    src="./resourses/icons/trash.svg" alt=""></button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th scope="row"><?php echo $getSadmon['name']; ?></th>
+                            <td><?php echo $getSadmon['last_name_p']; ?></td>
+                            <td><?php echo $getSadmon['last_name_m']; ?></td>
+                            <td><?php echo $getSadmon['user_name']; ?></td>
+                            <td><?php echo $getSadmon['rol_name']; ?></td>
+                            <td>
+                                <a class="btn btn-lg btn-success" href="student.php?student_id=<?php echo $getSadmon['id']; ?>"><img src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
+                                <button class="btn btn-lg btn-success btnDelete" aria-details="<?php echo $getSadmon['id']; ?>" href=""><img src="./resourses/icons/trash.svg" alt=""></button>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
+            <nav class="d-flex justify-content-center" aria-label="Page navigation">
+                <ul class="pagination">
+                    <?php
+                    $res = mysqli_fetch_array(mysqli_query($con, $countSql));
+                    for ($i = 0; $i < ceil($res['total'] / 5); $i++) {
+                    ?>
+                        <li class="page-item"><a href="veradministrativo.php?page=<?php echo $i ?>" class="page-link"><?php echo $i + 1; ?></a></li>
+                    <?php } ?>
+                </ul>
+            </nav>
         </div>
     </div>
     </div>
 
     <?php
-        require_once('components/footer.php');
+    require_once('components/footer.php');
     ?>
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
@@ -86,13 +94,13 @@ if (!Session::exists()) {
     <script src="./js/sweetalert2.all.min.js"></script>
 
     <?php if (Session::in('msj')) { ?>
-    <script defer>
-    Swal.fire({
-        icon: 'success',
-        title: 'Se realizo la acción',
-        text: '<?php echo Session::get('msj') ?>'
-    });
-    </script>
+        <script defer>
+            Swal.fire({
+                icon: 'success',
+                title: 'Se realizo la acción',
+                text: '<?php echo Session::get('msj') ?>'
+            });
+        </script>
     <?php } ?>
 </body>
 

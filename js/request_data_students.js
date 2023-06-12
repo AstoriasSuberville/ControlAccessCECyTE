@@ -17,6 +17,7 @@ filter.addEventListener("keyup", (evt) => {
     })
         .then(res => res.json())
         .then(res => {
+            console.log(res);
             let data = '';
             if (res.students.length > 0) {
                 res.students.forEach(student => {
@@ -26,6 +27,11 @@ filter.addEventListener("keyup", (evt) => {
                             <td>${student.name}</td>
                             <td>${student.last_name_p}</td>
                             <td>${student.last_name_m}</td>
+                            <td>${student.carrier}</td>
+                            <td>
+                            <a class="btn btn-lg btn-success" href="student.php?student_id=${student.id}"><img src="./resourses/icons/Edit.png" width="30" height="30" alt=""></a>
+                            <button class="btn btn-lg btn-success btnDelete" aria-details="${student.id}" href=""><img src="./resourses/icons/trash.svg" alt=""></button>
+                            </td>
                         </tr>
                         `;
                 });

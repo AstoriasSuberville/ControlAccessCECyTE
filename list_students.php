@@ -72,7 +72,7 @@ if (!Session::exists()) {
                 </thead>
                 <tbody id="contentStudents">
                     <?php
-                    $sql = "select u.id, u.barcode, u.name, u.last_name_p, u.last_name_m from user as u group by u.id";
+                    $sql = "select u.id, u.barcode, u.name, u.last_name_p, u.last_name_m from user u join rol r on u.rol_id = r.id where lower(r.name) = 'estudiante' order by u.id";
                     $query = mysqli_query($con, $sql);
                     while ($getStudent = mysqli_fetch_array($query)) {
                     ?>

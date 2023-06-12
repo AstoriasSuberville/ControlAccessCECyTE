@@ -50,7 +50,7 @@ if (!Session::exists()) {
                 </thead>
                 <tbody id="contentAdmon">
                     <?php
-                    $sql = "select u.id, u.name, u.last_name_p, u.last_name_m, u.user_name, u.rol_id from user as u group by u.id";
+                    $sql = "select u.id, u.name, u.last_name_p, u.last_name_m, u.user_name, r.name as rol_name from user as u join rol r on u.rol_id = r.id where lower(r.name) <> 'estudiante' order by u.id";
                     $query = mysqli_query($con, $sql);
                     while ($getSadmon = mysqli_fetch_array($query)) {   
                     ?>
@@ -60,7 +60,7 @@ if (!Session::exists()) {
                         <td><?php echo $getSadmon['last_name_p']; ?></td>
                         <td><?php echo $getSadmon['last_name_m']; ?></td>
                         <td><?php echo $getSadmon['user_name']; ?></td>
-                        <td><?php echo $getSadmon['rol_id']; ?></td>
+                        <td><?php echo $getSadmon['rol_name']; ?></td>
                         <td>
                             <a class="btn btn-lg btn-success"
                                 href="student.php?student_id=<?php echo $getSadmon['id']; ?>"><img

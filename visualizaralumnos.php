@@ -30,7 +30,7 @@ if (!Session::exists()) {
     require_once('components/navbar.php');
     ?>
     <div>
-        <h1 style="text-align:center">Lista De Alumnos</h1>
+        <h1 class="text-center">Lista De Alumnos</h1>
     </div>
     <table class="table">
         <thead class="thead-dark">

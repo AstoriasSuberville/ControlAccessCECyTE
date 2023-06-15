@@ -43,10 +43,11 @@ filter.addEventListener("keyup", (evt) => {
                 `;
             }
             contentStudents.innerHTML = data;
+            con();
         });
 });
 
-(() => {
+const con = () => {
     $('.btnDelete').click(evt => {
         Swal.fire({
             title: '¿Seguro que desea realizar esta accion?',
@@ -95,4 +96,4 @@ filter.addEventListener("keyup", (evt) => {
             }
         })
     });
-})();
+};

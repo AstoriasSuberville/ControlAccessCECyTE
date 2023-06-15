@@ -1,6 +1,13 @@
 <?php
 session_start();
 require_once('./Helpers/Session.php');
+require_once('./admon/conexion.php');
+
+if (!Session::exists()) {
+    Session::withMessage(['msj' => 'Usted no ha iniciado sesion'], function () {
+        header('Location: /login.php');
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +20,7 @@ require_once('./Helpers/Session.php');
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/searchbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
     <title>Tutores</title>
@@ -25,7 +33,7 @@ require_once('./Helpers/Session.php');
 
     <div class="container-fluid">
         <div class="mt-3">
-            <h1 style="text-align:center">Lista De Estudiantes</h1>
+            <h1 style="text-align:center">Lista De Tutores</h1>
         </div>
 
         <form class="form mb-3">

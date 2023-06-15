@@ -22,15 +22,8 @@
                     </div>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Registrar Acceso
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="./tomarasistenciaslector.php">Lector De Codigo</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="./tomarasistenciascam.php">Camara</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="./tomarasistenciaslector.php">Lector De Codigo</a>
                 </li>
 
                 <li class="nav-item">
@@ -48,8 +41,15 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="./verperiodo.php">Periodo</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Periodo
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./verperiodo.php">Actualizar Ciclo Escolar</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Ver Ciclo Escolar Actual</a>
+                    </div>
                 </li>
 
                 <li class="nav-item">

@@ -48,6 +48,10 @@ if (!Session::exists()) {
         </button>
     </form>
 
+    <div>
+        <p>NOTA: Despues de escanear el codigo da un clic<img src="./resourses/icons/touch.png" width="50" height="50" alt="">en cualquier parte de la pantalla.</p>
+    </div>
+
     <?php
     require_once('components/footer.php');
     ?>

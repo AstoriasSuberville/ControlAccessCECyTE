@@ -17,7 +17,7 @@ require_once('./Helpers/Session.php');
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" type="image/icon" href="img/icon/logo.ico">
-    <title>Periodo</title>
+    <title>Ciclo Escolar</title>
 </head>
 
 <body>
@@ -27,23 +27,23 @@ require_once('./Helpers/Session.php');
     <div class="container">
         <form class="form-signin text-center" id="configSemester">
             <img class="mb-4" src="img/logo.png" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Registrar Semestre</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Registrar Ciclo Escolar</h1>
             <div class="text-left form-group">
-                <label for="nameSemester">Nombre del periodo</label>
-                <input type="text" class="form-control" id="nameSemester" placeholder="Ejemplo: Periodo 2023 - 2024" required>
+                <label for="nameSemester">Nombre del Ciclo</label>
+                <input type="text" class="form-control" id="nameSemester" placeholder="Ejemplo: Ciclo 2023 - 2024" required>
             </div>
 
             <div class="text-left form-group">
-                <label for="initSemester">Seleccione el periodo de inicio</label>
+                <label for="initSemester">Seleccione el Ciclo de inicio</label>
                 <input type="text" class="form-control period" id="initSemester" placeholder="Click aqui" required>
             </div>
 
             <div class="text-left form-group">
-                <label for="finSemester">Seleccione el periodo final</label>
+                <label for="finSemester">Seleccione el Ciclo final</label>
                 <input type="text" class="form-control period" id="finSemester" placeholder="Click aqui" required>
             </div>
 
-            <h3 class="h5 mt-3 mb-3 font-weight-normal">Registrar Semestre</h3>
+            <h3 class="h5 mt-3 mb-3 font-weight-normal">Registrar Ciclo Escolar</h3>
             <div class="text-left form-group">
                 <label for="nonWorkingDays">Seleccione las fechas inhabiles.</label>
                 <input type="text" name="xd3" class="form-control" id="nonWorkingDays" placeholder="Click aqui" required>

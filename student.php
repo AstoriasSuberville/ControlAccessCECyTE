@@ -33,6 +33,7 @@ $student = mysqli_fetch_array($query);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/select2.min.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -104,14 +105,22 @@ $student = mysqli_fetch_array($query);
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
                                 <div class="mb-2">
-                                    <h6>Filtrar por periodo</h6>
-                                    <form>
+                                    <h6>Filtrar por semestre</h6>
+                                    <form method="POST" id="form">
+                                        <input type="hidden" id="student_id" value="<?php echo $student_id ?>">
                                         <div class="row">
                                             <div class="col">
-                                                <input type="date" class="form-control" placeholder="First name">
-                                            </div>
-                                            <div class="col">
-                                                <input type="date" class="form-control" placeholder="Last name">
+                                                <?php
+                                                $query = "SELECT id, name FROM config_semester ORDER BY id ASC;";
+                                                $res = mysqli_query($con, $query);
+                                                ?>
+                                                <select class="w-100" id="slPeriodo">
+                                                    <?php
+                                                    while ($item = mysqli_fetch_array($res)) {
+                                                    ?>
+                                                        <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                             <div class="col">
                                                 <button type="submit" class="btn btn-primary">Filtrar</button>
@@ -136,37 +145,8 @@ $student = mysqli_fetch_array($query);
                                                         <th scope="col">Hora de salida</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $limit = (isset($_GET['page'])) ? $_GET['page'] * 5 : 0;
-                                                    $countSql = "SELECT DATE(date_capture) AS fecha, TIME(MIN(date_capture)) AS hora_entrada, TIME(MAX(date_capture)) AS hora_salida FROM asistences where user_id = '" . $student_id . "' GROUP BY DATE(date_capture);";
-                                                    $getAccesssSql = "SELECT DATE(date_capture) AS fecha, TIME(MIN(date_capture)) AS hora_entrada, TIME(MAX(date_capture)) AS hora_salida FROM asistences where user_id = '" . $student_id . "' GROUP BY DATE(date_capture) limit $limit, 5";
-                                                    $resAccess = mysqli_query($con, $getAccesssSql);
-                                                    while ($access = mysqli_fetch_array($resAccess)) {
-                                                    ?>
-                                                        <tr>
-                                                            <td><?php echo date('d/m/Y', strtotime($access['fecha'])) ?></td>
-                                                            <td><?php echo $access['hora_entrada']; ?></td>
-                                                            <td><?php if ($access['hora_entrada'] != $access['hora_salida']) {
-                                                                    echo $access['hora_salida'];
-                                                                } else {
-                                                                    echo "";
-                                                                }
-                                                                ?></td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
+                                                <tbody id="assistences"></tbody>
                                             </table>
-                                            <nav class="d-flex justify-content-center" aria-label="Page navigation">
-                                                <ul class="pagination">
-                                                    <?php
-                                                    $res = mysqli_num_rows(mysqli_query($con, $countSql));
-                                                    for ($i = 0; $i < ceil($res / 5); $i++) {
-                                                    ?>
-                                                        <li class="page-item"><a href="student.php?student_id=<?php echo $student_id?>&page=<?php echo $i; ?>" class="page-link"><?php echo $i + 1; ?></a></li>
-                                                    <?php } ?>
-                                                </ul>
-                                            </nav>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -190,6 +170,8 @@ $student = mysqli_fetch_array($query);
     <script src="js/apexcharts.js"></script>
     <script src="js/graficapersonal.js"></script>
     <script src="js/descargar_grafica.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/scriptStudent.js"></script>
 </body>
 
 </html>

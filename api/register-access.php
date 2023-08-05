@@ -8,7 +8,7 @@ require_once('./../admon/conexion.php');
 
 $barcode = $_POST['barcode'];
 
-date_default_timezone_set('America/Mexico_City');
+date_default_timezone_set('America/Mazatlan');
 $dateToday = date("Y-m-d h:i:s");
 
 $getUserSql = "select id from user where barcode = '" . $barcode . "';";
